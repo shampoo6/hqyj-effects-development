@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="css/mui.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- 详细效果，请查看 my-mui 项目中的 parent.html -->
+
+    <header class="mui-bar mui-bar-nav">
+        <h1 class="mui-title">创建和跳转页面</h1>
+    </header>
+    <div class="mui-content">
+        <div class="mui-row">
+            <button class="btn1">跳转到child1</button>
+        </div>
+        <div class="mui-row">
+            <button class="btn2">打开child1页面</button>
+        </div>
+    </div>
+
+    <script src="js/mui.js"></script>
+    <script type="text/javascript">
+        // 使用 init 其中配置 subpages
+        // subpages 在网页中使用的是 iframe 内嵌页面
+        // 设置完成子页面后，该页面将被嵌入我们当前的页面
+        mui.init({
+            subpages: [{
+                url: './child1.html', //子页面HTML地址，支持本地地址和网络地址
+                id: 'child1', // 子页面标志
+                styles: { // 子页面窗口的样式，这里的样式指的是位置和宽高
+                    top: '150px', // 子页面顶部位置
+                    bottom: '100px', // 子页面底部位置
+                    width: '200px', // 子页面宽度，默认为100%
+                    height: '300px', // 子页面高度，默认为100%
+                },
+                extras: {} //额外扩展参数
+            }]
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<style>
+			html,
+			body {
+				height: 100%;
+			}
+
+			body {
+				background-color: #2AC845;
+			}
+		</style>
+	</head>
+
+	<body>
+		child
+		<script src="js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init()
+
+			// 监听父窗口发来的事件
+			window.addEventListener('你妈叫你吃饭了', ev => {
+				console.log(ev)
+				// 父窗口发送来的参数，可以通过 ev.detail 获取
+				console.log(JSON.stringify(ev.detail))
+			})
+
+			// 向父窗口发送事件
+			
+			// 在 plusready 以后 调用 plus api
+			mui.plusReady(function() {
+				let parentView = plus.webview.getLaunchWebview()
+				
+				// 向父窗口发送消息
+				mui.fire(parentView, '你爸叫你去买烟', {msg: '我要买中华'})
+			})
+		</script>
+	</body>
+
+</html>

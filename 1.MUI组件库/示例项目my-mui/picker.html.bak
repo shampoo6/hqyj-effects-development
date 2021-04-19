@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<link href="css/mui.picker.css" rel="stylesheet" />
+		<link href="css/mui.dtpicker.css" rel="stylesheet" />
+		<link href="css/mui.poppicker.css" rel="stylesheet" />
+		<!-- mui.picker.js/.css mui.poppicker.js/.css -->
+	</head>
+
+	<body>
+		<script src="js/mui.js"></script>
+		<script src="js/mui.picker.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+
+			// var picker = new mui.PopPicker();
+			// picker.setData([{
+			// 	value: 'zz',
+			// 	text: '智子'
+			// }]);
+			// picker.show(function(selectItems) {
+			// 	console.log(selectItems)
+			// 	console.log(selectItems[0].text); //智子
+			// 	console.log(selectItems[0].value); //zz 
+			// })
+
+			// var picker = new mui.PopPicker({
+			//     layer: 2
+			// });
+			//     picker.setData([{
+			//         value: '110000',
+			//         text: '北京市',
+			//         children: [{
+			//                 value: "110101",
+			//                 text: "东城区"
+			//         }]
+			//     }, {
+			//         value: '120000',
+			//         text: '天津市',
+			//         children: [{
+			// 	        value: "120101",
+			//             text: "和平区"
+			//         }, {
+			//             value: "120102",
+			//             text: "河东区"
+			//         }, {
+			//             value: "120104",
+			//             text: "南开区"
+			//         }
+			//         ]
+			//     }])
+			// picker.pickers[0].setSelectedIndex(1);
+			// picker.pickers[1].setSelectedIndex(1);
+			// picker.show(function(SelectedItem) {
+			// 	console.log(SelectedItem);
+			// })
+
+			var dtPicker = new mui.DtPicker({
+				type: "datetime", //设置日历初始视图模式 
+				beginDate: new Date(2015, 04, 25), //设置开始日期 
+				endDate: new Date(2016, 04, 25), //设置结束日期 
+				labels: ['Year', 'Mon', 'Day', 'Hour', 'min'], //设置默认标签区域提示语 
+				customData: {
+					h: [{
+							value: 'AM',
+							text: 'AM'
+						},
+						{
+							value: 'PM',
+							text: 'PM'
+						}
+					]
+				} //时间/日期别名 
+			})
+			dtPicker.show(function(selectItems) {
+				console.log(selectItems.y); //{text: "2016",value: 2016} 
+				console.log(selectItems.m); //{text: "05",value: "05"} 
+			})
+		</script>
+	</body>
+
+</html>

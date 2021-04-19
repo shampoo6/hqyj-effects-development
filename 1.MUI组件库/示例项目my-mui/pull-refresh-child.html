@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<style>
+			body,
+			html {
+				height: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">Item 1</li>
+				<li class="mui-table-view-cell">Item 2</li>
+				<li class="mui-table-view-cell">Item 3</li>
+				<li class="mui-table-view-cell">Item 1</li>
+				<li class="mui-table-view-cell">Item 2</li>
+				<li class="mui-table-view-cell">Item 3</li>
+				<li class="mui-table-view-cell">Item 1</li>
+				<li class="mui-table-view-cell">Item 2</li>
+				<li class="mui-table-view-cell">Item 3</li>
+				<li class="mui-table-view-cell">Item 1</li>
+				<li class="mui-table-view-cell">Item 2</li>
+				<li class="mui-table-view-cell">Item 3</li>
+				<li class="mui-table-view-cell">Item 1</li>
+				<li class="mui-table-view-cell">Item 2</li>
+				<li class="mui-table-view-cell">Item 3</li>
+				<li class="mui-table-view-cell">Item 1</li>
+				<li class="mui-table-view-cell">Item 2</li>
+				<li class="mui-table-view-cell">Item 3</li>
+			</ul>
+		</div>
+		<script src="js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				// 子页面下拉刷新配置
+				pullRefresh: {
+					container: ".mui-content", //下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+					down: {
+						height: 50, //可选,默认50.触发下拉刷新拖动距离,
+						auto: false, //可选,默认false.首次加载自动下拉刷新一次
+						contentdown: "下拉可以刷新", //可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
+						contentover: "释放立即刷新", //可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
+						contentrefresh: "正在刷新...", //可选，正在刷新状态时，下拉刷新控件上显示的标题内容
+						callback: () => {
+							// 通常在此处左网络请求
+							setTimeout(() => {
+								// 调用以下函数，关闭下拉提示
+								// mui中的选择器，需要时下拉刷新配置中的container的值
+								mui('.mui-content').pullRefresh().endPulldown();
+							}, 3000)
+						} //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+					},
+
+					up: {
+						height: 50, //可选.默认50.触发上拉加载拖动距离
+						auto: false, //可选,默认false.自动上拉加载一次
+						contentrefresh: "正在加载...", //可选，正在加载状态时，上拉加载控件上显示的标题内容
+						contentnomore: '我是有底线的', //可选，请求完毕若没有更多数据时显示的提醒内容；
+						callback: () => {
+							// 通常在此处左网络请求
+							setTimeout(() => {
+								// 调用以下函数，关闭下拉提示
+								// mui中的选择器，需要时下拉刷新配置中的container的值
+								// endPullupToRefresh中的参数，代表是否拉到地步了，值为false代表还没到底部，否则代表到底部了
+								mui('.mui-content').pullRefresh().endPullupToRefresh(true);
+							}, 3000)
+						} //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+					}
+				}
+			})
+		</script>
+	</body>
+
+</html>

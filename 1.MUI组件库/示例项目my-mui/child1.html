@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<style>
+			body,
+			html {
+				height: 100%;
+			}
+
+			body {
+				background-color: green;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">child1</h1>
+		</header>
+
+		<div class="mui-content">
+			<!-- 使用按钮关闭子窗口 -->
+			<!-- 能够关闭窗口的原因，是因为添加了class mui-action-back -->
+			<button type="button" class='mui-btn mui-btn-danger mui-action-back'>关闭</button>
+
+			<button class="btn1">使用代码关闭窗口</button>
+		</div>
+
+		<script src="js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				// 可以配置init 的 beforeback，窗口关闭前，将调用该函数
+				beforeback: () => {
+					alert('关闭前，触发beforeback函数')
+				}
+			})
+
+			mui.plusReady(function() {
+				let page = plus.webview.currentWebview()
+				console.log(JSON.stringify(page))
+
+				setTimeout(() => {
+					// alert('show')
+					// plus.webview.show('./alipay.html', 'slide-in-right', 100)
+				}, 3000)
+			})
+
+			let btn1 = document.querySelector('.btn1')
+			btn1.addEventListener('tap', () => {
+				// 关闭窗口，返回上个页面
+				mui.back()
+			})
+
+			window.addEventListener('myEvent', (ev) => {
+				console.log('收到自定义事件')
+				console.log(JSON.stringify(ev))
+
+				console.log(JSON.stringify(ev.detail))
+
+				alert('receive my event')
+			})
+		</script>
+	</body>
+
+</html>

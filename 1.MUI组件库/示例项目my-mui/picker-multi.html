@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<!-- 引入picker的样式 -->
+		<link href="./css/mui.picker.css" rel="stylesheet" />
+		<link href="./css/mui.poppicker.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<script src="js/mui.js"></script>
+		<!-- 引入picker的js -->
+		<script src="./js/mui.picker.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+
+			// 级联picker
+
+			// 创建picker
+			let picker = new mui.PopPicker({
+				// 层级
+				layer: 2 // 添加layer配置
+			});
+			// 设置选项
+			picker.setData([{
+					value: 'grade1',
+					text: '一年级',
+					children: [{
+						value: 'class1',
+						text: '一班'
+					}, {
+						value: 'class2',
+						text: '二班'
+					}, {
+						value: 'class3',
+						text: '三班'
+					}, ]
+				},
+				{
+					value: 'grade2',
+					text: '二年级',
+					children: [
+						{
+							value: 'class4',
+							text: '四班'
+						},
+						{
+							value: 'class5',
+							text: '五班'
+						}
+					]
+				},
+			]);
+
+			// 设置默认值
+			// picker.pickers 数组，每个成员分别代表的一个选项层
+			// 此处就分别代表年级的选项和班级的选项
+			// pickers[0] ： 年级
+			picker.pickers[0].setSelectedIndex(1)
+			// pickers[1] ： 班级
+			picker.pickers[1].setSelectedIndex(1)
+
+			// 打开picker
+			// show函数中接收一个参数，该参数是一个回调函数
+			// 当用户点击确定后，picker会调用该回调函数，其中selectItems是用户所选的选项
+			picker.show(function(selectItems) {
+				console.log(selectItems)
+				console.log(selectItems[0].text)
+				console.log(selectItems[0].value)
+			})
+
+		</script>
+	</body>
+
+</html>

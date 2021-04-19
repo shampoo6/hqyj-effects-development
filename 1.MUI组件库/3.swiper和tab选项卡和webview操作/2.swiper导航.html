@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<link href="css/swiper-bundle.min.css" rel="stylesheet" />
+		<style>
+			.swiper-slide {
+				border: 1px solid red;
+				width: 4em;
+				text-align: center;
+			}
+			
+			.swiper-slide.active {
+				background-color: red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">swiper导航</h1>
+		</header>
+		<div class="mui-content">
+			<!-- swiper 导航栏 -->
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<!-- Slides -->
+					<div class="swiper-slide active">Slide 1</div>
+					<div class="swiper-slide">Slide 2</div>
+					<div class="swiper-slide">Slide 3</div>
+					<div class="swiper-slide">Slide 4</div>
+					<div class="swiper-slide">Slide 5</div>
+					<div class="swiper-slide">Slide 6</div>
+					<div class="swiper-slide">Slide 7</div>
+				</div>
+			</div>
+			<!-- 内容区域 -->
+			<div class="mui-control-content mui-active">
+				item1
+			</div>
+			<div class="mui-control-content">
+				item2
+			</div>
+			<div class="mui-control-content">
+				item3
+			</div>
+			<div class="mui-control-content">
+				item4
+			</div>
+			<div class="mui-control-content">
+				item5
+			</div>
+			<div class="mui-control-content">
+				item6
+			</div>
+			<div class="mui-control-content">
+				item7
+			</div>
+		</div>
+		<script src="js/mui.js"></script>
+		<script src="./js/swiper-bundle.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+
+			// 声明一个当前激活的索引
+			let currentIndex = 0
+			
+			let slides = document.querySelectorAll('.swiper-slide')
+			let contents = document.querySelectorAll('.mui-control-content')
+
+			let swiper = new Swiper('.swiper-container', {
+				slidesPerView: 'auto', // 允许预览下一个可滑动内容
+				// spaceBetween: 30, // 两个 slide 之间的间距
+				// centeredSlides: true,
+			})
+
+			swiper.on('tap', (ev) => {
+				console.log(ev)
+				// 获取点击的slide的索引
+				let index = ev.clickedIndex
+				
+				// 清空当前slide的样式
+				slides[currentIndex].classList.remove('active')
+				contents[currentIndex].classList.remove('mui-active')
+				
+				// 给新点击的slide添加样式
+				slides[index].classList.add('active')
+				contents[index].classList.add('mui-active')
+				
+				currentIndex = index
+				swiper.slideTo(currentIndex, 200)
+			})
+		</script>
+	</body>
+
+</html>

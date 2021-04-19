@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">父子窗口通信</h1>
+		</header>
+		<div class="mui-content">
+			<button class="btn1">向子窗口发消息</button>
+		</div>
+		<script src="js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				subpages: [{
+					url: './message-child.html',
+					id: 'child',
+					styles: {
+						top: '200px',
+						bottom: '0'
+					}
+				}]
+			})
+
+			mui.plusReady(() => {
+				let currentWebview = plus.webview.currentWebview()
+				console.log(JSON.stringify(currentWebview))
+			})
+
+			document.querySelector('.btn1').addEventListener('tap', () => {
+				// 获取子窗口
+				// let childView = plus.webview.currentWebview().children()[0]
+				let childView = plus.webview.getWebviewById('child')
+
+
+				// 窗口间发送事件的语法：
+				// mui.fire(webviewObject, event, params)
+				// webviewObject: 是webview实例对象
+				// event: 自定义事件名称
+				// params: 必须是个json对象
+				mui.fire(childView, '你妈叫你吃饭了', {
+					msg: '你妈叫你吃饭了哦！！！'
+				})
+			})
+
+			// 监听子窗口发来的消息
+			window.addEventListener('你爸叫你去买烟', ev => {
+				console.log(JSON.stringify(ev.detail))
+			})
+		</script>
+	</body>
+
+</html>

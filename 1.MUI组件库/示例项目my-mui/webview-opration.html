@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">webview的操作</h1>
+		</header>
+		<div class="mui-content">
+			<button class="btn1">打开子窗口</button>
+			<button class="btn2">关闭子窗口</button>
+			<button class="btn3">隐藏子窗口</button>
+			<button class="btn4">显示子窗口</button>
+			<button class="btn5">改变子窗口中的页面</button>
+		</div>
+		<script src="js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init()
+
+			let child2 = undefined
+
+			document.querySelector('.btn1').addEventListener('tap', () => {
+				// child2 是一个webview对象
+				child2 = mui.openWindow({
+					url: './child2.html',
+					id: 'child2',
+					styles: {
+						top: '200px',
+						width: '200px',
+						height: '220px'
+					}
+				})
+			})
+
+			document.querySelector('.btn2').addEventListener('tap', () => {
+				// 使用webview.close()关闭窗口
+				if (child2) {
+					child2.close()
+					child2 = undefined
+				}
+			})
+			
+			document.querySelector('.btn3').addEventListener('tap', () => {
+				if (child2) {
+					// 隐藏窗口
+					child2.hide()
+				}
+			})
+			
+			document.querySelector('.btn4').addEventListener('tap', () => {
+				if (child2) {
+					// 显示窗口
+					child2.show()
+				}
+			})
+			
+			document.querySelector('.btn5').addEventListener('tap', () => {
+				if (child2) {
+					// 让webview加载指定页面
+					// 相当于浏览器上的 location.herf
+					child2.loadURL('./alipay.html')
+				}
+			})
+			
+		</script>
+	</body>
+
+</html>

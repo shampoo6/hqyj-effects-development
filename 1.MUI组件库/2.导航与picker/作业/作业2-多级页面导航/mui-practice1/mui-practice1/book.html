@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">我的图书</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right" onclick="navigate(0)">
+						book1
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">
+						book2
+					</a>
+				</li>
+			</ul>
+		</div>
+		<script src="js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			
+			// 图书数据
+			let books = [
+				{
+					id: 0,
+					name: 'book1',
+					author: 'author1'
+				},
+				{
+					id: 1,
+					name: 'book2',
+					author: 'author2'
+				},
+				{
+					id: 2,
+					name: 'book3',
+					author: 'author3'
+				},
+				{
+					id: 3,
+					name: 'book4',
+					author: 'author4'
+				},
+				{
+					id: 4,
+					name: 'book5',
+					author: 'author5'
+				}
+			]
+			
+			let html = ''
+			for(let i = 0;i<books.length;i++){
+				let book = books[i]
+				html += 
+				'<li class="mui-table-view-cell">'+
+					'<a class="mui-navigate-right" onclick="navigate('+i+')">'+
+						book.name+
+					'</a>'+
+				'</li>'
+			}
+			
+			let ul = document.querySelector('ul')
+			ul.innerHTML = html
+			function navigate(index) {
+				mui.openWindow({
+					url: './book-detail.html?id='+index,
+					id: 'book-detail'
+				})
+			}
+		</script>
+	</body>
+
+</html>

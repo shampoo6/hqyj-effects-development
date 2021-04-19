@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<link href="css/mui.picker.all.css" rel="stylesheet" />
+		<style>
+			.sex-row {
+				height: 100%;
+				display: flex;
+			}
+
+
+			/* .sex-row>label>input {
+				-webkit-appearance: none;
+			} */
+
+			/* .sex-row>label>input {
+				-webkit-appearance: none;
+			}
+
+			.sex-row>label>input:checked:before {
+				content: '\e441';
+				color: #007aff;
+			}
+
+			.sex-row>label>input:before {
+				font-family: Muiicons;
+				font-size: 28px;
+				font-weight: normal;
+				line-height: 1;
+				text-decoration: none;
+				color: #aaa;
+				border-radius: 0;
+				background: none;
+				-webkit-font-smoothing: antialiased;
+			} */
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">用户信息</h1>
+		</header>
+		<div class="mui-content">
+			<form class="mui-input-group">
+				<div class="mui-input-row">
+					<label>姓名</label>
+					<input name="name" type="text" placeholder="请输入">
+				</div>
+				<div class="mui-input-row">
+					<label>性别</label>
+					<div class="sex-row">
+						<label>
+							<input name="sex" type="radio" value="male">
+							男
+						</label>
+						<label>
+							<input name="sex" type="radio" value="female" checked>
+							女
+						</label>
+					</div>
+				</div>
+
+				<!-- <div class="mui-input-row mui-radio mui-left">
+					<label>男</label>
+					<input name="radio1" type="radio" value="male">
+				</div>
+				<div class="mui-input-row mui-radio mui-left">
+					<label>女</label>
+					<input name="radio1" type="radio" value="female" checked>
+				</div> -->
+				<div class="mui-input-row">
+					<label>生日</label>
+					<input name="birthday" class="birthday" type="text" placeholder="请选择生日" readonly="true" />
+				</div>
+				<div class="mui-input-row">
+					<label>年龄</label>
+					<input name="age" class="age" type="text" placeholder="0" readonly="true" />
+				</div>
+
+				<div class="mui-button-row">
+					<button type="button" class="mui-btn mui-btn-primary"
+						onclick="return false;">确认</button>&nbsp;&nbsp;
+					<button type="button" class="mui-btn mui-btn-danger" onclick="return false;">取消</button>
+				</div>
+			</form>
+		</div>
+		<script src="js/mui.js"></script>
+		<script src="./js/mui.picker.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+
+			let dtPicker = new mui.DtPicker({
+				type: 'date',
+				beginDate: new Date(1960, 0),
+				endDate: new Date()
+			})
+
+			let birthday = document.querySelector('.birthday')
+			let age = document.querySelector('.age')
+			let confirm = document.querySelector('.mui-btn-primary')
+			let form = document.querySelector('form')
+			birthday.addEventListener('tap', () => {
+				dtPicker.show((selectedItem) => {
+					console.log(selectedItem)
+					birthday.value = selectedItem.value
+					// 生日
+					let birth = new Date(birthday.value).getTime()
+
+					// 现在时间
+					let now = Date.now()
+
+					let _age = now - birth
+					_age = Math.floor(_age * 0.001 / 60 / 60 / 24 / 365)
+					age.value = _age
+				})
+			})
+			
+			confirm.addEventListener('tap', ()=>{
+				let fd = new FormData(form)
+				console.log(fd.get('name'))
+				console.log(fd.get('sex'))
+				console.log(fd.get('birthday'))
+				console.log(fd.get('age'))
+			})
+		</script>
+	</body>
+
+</html>

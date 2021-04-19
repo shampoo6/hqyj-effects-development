@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+	</head>
+
+	<body>
+
+		<div class="mui-content">
+			<button class="btn">click</button>
+			<button class="btn">click</button>
+			<button class="btn">click</button>
+			<div>
+				<button class="btn1">解绑事件</button>
+			</div>
+			<div>
+				<button class="btn2">通过代码触发事件</button>
+			</div>
+		</div>
+
+		<script src="js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init()
+
+			let tapEvent1 = function(event) {
+				console.log(event)
+				console.log('我是tapEvent1')
+			}
+			let tapEvent2 = function(event) {
+				console.log('我是tapEvent2')
+			}
+
+			// 使用 mui 批量对元素进行事件绑定
+			mui('.mui-content').on('tap', '.btn', tapEvent1)
+			mui('.mui-content').on('tap', '.btn', tapEvent2)
+
+			// 解绑事件
+			document.querySelector('.btn1').addEventListener('tap', () => {
+				// 取消指定的子元素上的指定事件的指定处理程序
+				// mui('.mui-content').off('tap', '.btn', tapEvent1)
+				// 取消指定的子元素上的指定事件的所有处理程序
+				// mui('.mui-content').off('tap', '.btn')
+				// 取消指定的子元素上事件处理程序
+				mui('.mui-content').off('tap')
+				console.log('解绑完成')
+			})
+
+			document.querySelector('.btn2').addEventListener('tap', () => {
+				// 通过 trigger 函数 触发指定元素的指定事件，并可以传递参数
+				mui.trigger(document.querySelector('.btn:first-child'), 'tap', {
+					msg: 'hello我是参数'
+				})
+			})
+   
+		</script>
+	</body>
+
+</html>

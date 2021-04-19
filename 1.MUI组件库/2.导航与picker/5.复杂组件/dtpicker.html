@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<!-- 引入picker的样式 -->
+		<link href="./css/mui.picker.css" rel="stylesheet" />
+		<link href="./css/mui.poppicker.css" rel="stylesheet" />
+		<!-- 引入dtPicker独有的样式文件 -->
+		<link href="./css/mui.dtpicker.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<script src="js/mui.js"></script>
+		<!-- 引入picker的js -->
+		<script src="./js/mui.picker.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+
+			// 创建一个dtpicker对象
+			let picker = new mui.DtPicker({
+				type: 'datetime', // 日期和时间
+				// type: 'date' // 日期
+				// type: 'time' // 时间
+				// type: 'month' // 年月
+				// type: 'hour', // 年月日时
+				
+				// 按顺序填入标签，将依序显示在dtpicker上面
+				labels: ['我的年', '我的月', '晶', '小时', '子午线'],
+				customData: {
+					// 自定义数据
+					// key: 代表给哪一列自定义数据
+					// 'y'	可设置 年别名
+					// 'm'	可设置 月别名
+					// 'd'	可设置 日别名
+					// 'h'	可设置 时别名
+					// 'i'	可设置 分别名
+					// value：是个数组，自定义数据存放其中
+					h: [
+						{value: 1, text: '01'},
+						{value: 2, text: '02'},
+						{value: 3, text: '03'},
+						{value: 4, text: '04'},
+						{value: 5, text: '05'},
+						{value: 6, text: '06'},
+						{value: 7, text: '07'},
+						{value: 8, text: '08'},
+						{value: 9, text: '09'},
+						{value: 10, text: '10'},
+						{value: 11, text: '11'}
+					],
+					i: [
+						{
+							value: 'am',
+							text: '上午'
+						},
+						{
+							value: 'pm',
+							text: '下午'
+						}
+					]
+				},
+				// 设置起始时间
+				beginDate: new Date(2020, 5),
+				// 设置结束时间
+				endDate: new Date(2025, 7)
+			})
+			
+			// 给dtpicker赋值
+			picker.setSelectedValue('2024-11-05 6:pm')
+			
+			picker.show(function(selectItems) {
+				console.log(selectItems)
+			})
+		</script>
+	</body>
+
+</html>

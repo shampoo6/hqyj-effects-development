@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">导航</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view">
+				<!-- <li class="mui-table-view-cell">
+					<a class="mui-navigate-right" onclick="onClick()">Item 1</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">Item 2</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">Item 3</a>
+				</li> -->
+			</ul>
+		</div>
+
+		<script src="js/mui.js"></script>
+		<script type="text/javascript">
+			// 导航的配置项
+			let options = [{ // 每个对象描述导航相关信息
+					url: './children/book-manager.html',
+					id: 'book-manager',
+					title: '图书管理',
+					params: {
+						x: 1,
+						y: 2
+					}
+				},
+				{
+					url: './children/book-publish.html',
+					id: 'book-publish',
+					title: '发布图书',
+					params: {
+						id: '123'
+					}
+				}
+			]
+
+
+			let tableView = document.querySelector('.mui-table-view')
+
+			let html = ''
+
+			// for (let i = 0; i < 100; i++) {
+			// 	html +=
+			// 		'<li class="mui-table-view-cell">' +
+			// 		'<a class="mui-navigate-right" onclick="onClick(' + i + ')">Item ' + i + '</a>' +
+			// 		'</li>'
+			// }
+
+			for (let i = 0; i < options.length; i++) {
+				let option = options[i]
+				html +=
+					'<li class="mui-table-view-cell">' +
+					'<a class="mui-navigate-right" onclick="onClick(' + i + ')">' + option.title + '</a>' +
+					'</li>'
+			}
+
+			tableView.innerHTML = html
+
+			mui.init()
+
+			function onClick(index) {
+				// 通过索引获取配置
+				let option = options[index]
+
+				mui.openWindow({
+					// url: './children/item.html?id=' + index, // 打开的文件路径
+					url: option.url + formatParams(option.params), // 打开的文件路径
+					id: option.id,
+					styles: {
+						top: '0', //新页面顶部位置
+						bottom: '0', //新页面底部位置
+						// width: newpage - width, //新页面宽度，默认为100%
+						// height: newpage - height, //新页面高度，默认为100%
+					},
+					extras: {
+						// ..... //自定义扩展参数，可以用来处理页面间传值
+					},
+					createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+					show: {
+						autoShow: true, //页面loaded事件发生后自动显示，默认为true
+						// 动画类型文档：https://www.dcloud.io/docs/api/zh_cn/webview.html#plus.webview.AnimationTypeShow
+						aniShow: 'slide-in-right', //页面显示动画，默认为”slide-in-right“；
+						// duration: 1000 //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+					},
+					waiting: {
+						autoShow: true, //自动显示等待框，默认为true
+						title: '正在加载...', //等待对话框上显示的提示内容
+						options: {
+							// width: waiting - dialog - widht, //等待框背景区域宽度，默认根据内容自动计算合适宽度
+							// height: waiting - dialog - height, //等待框背景区域高度，默认根据内容自动计算合适高度
+						}
+					}
+				})
+			}
+
+			// 格式化参数
+			function formatParams(params) {
+				if (!params) return ''
+				let result = ''
+				for (let key in params) {
+					result += '&' + key + '=' + params[key]
+				}
+				return '?' + result.substring(1)
+			}
+		</script>
+	</body>
+
+</html>

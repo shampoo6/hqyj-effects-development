@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">下拉刷新</h1>
+		</header>
+		<div class="mui-content">
+			<!-- <ul class="mui-table-view">
+				<li class="mui-table-view-cell">Item 1</li>
+				<li class="mui-table-view-cell">Item 2</li>
+				<li class="mui-table-view-cell">Item 3</li>
+			</ul> -->
+		</div>
+		<script src="js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				// 在init中配置下拉刷新
+				// pullRefresh: {
+				// 	container: '.mui-content', // 需要下拉刷新的容器的css选择器
+				// 	down: { // 指定down属性开启下拉刷新功能
+				// 		style: 'circle', //必选，下拉刷新样式，目前支持原生5+ ‘circle’ 样式
+				// 		color: '#00aad0', //可选，默认“#2BD009” 下拉刷新控件颜色
+				// 		height: '100px', //可选,默认50px.下拉刷新控件的高度,
+				// 		range: '100px', //可选 默认100px,控件可下拉拖拽的范围
+				// 		offset: '0', //可选 默认0px,下拉刷新控件的起始位置
+				// 		auto: false, //可选,默认false.首次加载自动上拉刷新一次
+				// 		callback: () => {
+				// 			// 刷新的具体逻辑写在callback中，一般来说需要从服务器拉取数据
+
+				// 			setTimeout(() => {
+				// 				// 调用以下函数，关闭下拉提示
+				// 				// mui中的选择器，需要时下拉刷新配置中的container的值
+				// 				mui('.mui-content').pullRefresh().endPulldown();
+				// 			}, 3000)
+
+				// 		}
+				// 	}
+				// }
+				
+				// 配置子页面
+				subpages: [
+					{
+						url: './pull-refresh-child.html',
+						id: 'child',
+						styles: {
+							top: '44px',
+							bottom: '0'
+						}
+					}
+				]
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<link href="css/swiper-bundle.min.css" rel="stylesheet" />
+		<style>
+			.swiper-slide {
+				width: 5em;
+			}
+
+			.swiper-slide.active {
+				color: blue;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">swiper</h1>
+		</header>
+		<div class="mui-content">
+			<div class="swiper-container">
+				<!-- Additional required wrapper -->
+				<!-- 滚动元素写在swiper-wrapper中 -->
+				<!-- 必须写 swiper-wrapper -->
+				<div class="swiper-wrapper">
+					<!-- Slides -->
+					<div class="swiper-slide active">Slide 1</div>
+					<div class="swiper-slide">Slide 2</div>
+					<div class="swiper-slide">Slide 3</div>
+					<div class="swiper-slide">Slide 4</div>
+					<div class="swiper-slide">Slide 5</div>
+					<div class="swiper-slide">Slide 6</div>
+					<div class="swiper-slide">Slide 7</div>
+					<div class="swiper-slide">Slide 8</div>
+					<div class="swiper-slide">Slide 9</div>
+				</div>
+			</div>
+			<div class="mui-control-content">
+				hello slide1
+			</div>
+			<div class="mui-control-content">
+				hello slide2
+			</div>
+		</div>
+
+
+		<script src="js/mui.js"></script>
+		<script src="js/swiper-bundle.min.js"></script>
+		<script type="text/javascript">
+			let content = document.querySelector('.mui-content')
+
+			let contentEls = []
+
+			let currentIndex = 0
+
+			// 创建页面元素
+			for (let i = 0; i < 9; i++) {
+				let div = document.createElement('div')
+				div.classList.add('mui-control-content')
+				div.innerHTML = 'hello slide' + (i + 1)
+				div.addEventListener('click', () => {
+
+				})
+				content.appendChild(div)
+				contentEls.push(div)
+			}
+
+			contentEls[0].classList.add('mui-active')
+			
+			let slides = document.querySelectorAll('.swiper-wrapper>.swiper-slide')
+			
+			console.log(slides)
+			
+			mui.init()
+
+			const swiper = new Swiper('.swiper-container', {
+				slidesPerView: 'auto',
+				// spaceBetween: 30,
+				// Optional parameters
+				// 滚动方向
+				// 带选项： 
+				// horizontal：横向； vertical：纵向
+				direction: 'horizontal',
+				// 是否循环
+				loop: false,
+			});
+			swiper.on('tap', (ev) => {
+				console.log(ev)
+				slides[currentIndex].classList.remove('active')
+				contentEls[currentIndex].classList.remove('mui-active')
+				slides[ev.clickedIndex].classList.add('active')
+				contentEls[ev.clickedIndex].classList.add('mui-active')
+				currentIndex = ev.clickedIndex
+			})
+		</script>
+	</body>
+
+</html>

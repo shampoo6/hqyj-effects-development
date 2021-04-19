@@ -1,0 +1,288 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<link href="css/iconfont.css" rel="stylesheet" />
+		<link href="css/swiper-bundle.min.css" rel="stylesheet" />
+		<style>
+			html,
+			body {
+				height: 100%;
+			}
+
+			body {
+				line-height: normal !important;
+			}
+
+			.ali-header {
+				height: 140px;
+				background-color: #444444;
+				color: white;
+				padding: 8px;
+			}
+
+			.ali-header>div .iconfont {
+				font-size: 20px;
+			}
+
+			.ali-header>div:first-child {
+				height: 2ex;
+				display: flex;
+				justify-content: space-between;
+				margin-bottom: 16px;
+			}
+
+			.ali-header>div>div {
+				height: 100%;
+				display: flex;
+				align-items: center;
+			}
+
+			.icon {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+
+			.icon>div:first-child {
+				height: 64px;
+				font-size: 64px !important;
+			}
+
+			.ali-header>div:nth-child(2) {
+				display: flex;
+				justify-content: space-around;
+			}
+
+			.mui-col-sm-3 {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				background-color: white;
+				border: 2px solid #efeff4;
+			}
+
+			.mui-col-sm-3>div:first-child {
+				font-size: 64px;
+			}
+
+			.mui-content {
+				height: calc(100% - 190px);
+				position: relative;
+				padding-top: 32px;
+			}
+
+			.swiper-pagination {
+				position: relative;
+				top: 5px;
+			}
+
+			.last-row {
+				position: absolute;
+				left: 0;
+				bottom: 0;
+			}
+			
+			.mui-row {
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="ali-header">
+			<div>
+				<div><span class="iconfont icon-form"></span>账单</div>
+				<div><span class="iconfont icon-account"></span><span class="iconfont icon-add-select"></span></div>
+			</div>
+			<!-- 图标行 -->
+			<div>
+				<div class="icon">
+					<!-- 图标 -->
+					<div class="iconfont icon-scanning"></div>
+					<div>扫一扫</div>
+				</div>
+				<div class="icon">
+					<!-- 图标 -->
+					<div class="iconfont icon-dollar"></div>
+					<div>转账</div>
+				</div>
+				<div class="icon">
+					<!-- 图标 -->
+					<div class="iconfont icon-rmb"></div>
+					<div>余额宝</div>
+				</div>
+			</div>
+		</div>
+		<div class="mui-content">
+			<div class="swiper-container">
+				<!-- Additional required wrapper -->
+				<!-- 滚动元素写在swiper-wrapper中 -->
+				<!-- 必须写 swiper-wrapper -->
+				<div class="swiper-wrapper">
+					<!-- Slides -->
+					<div class="swiper-slide">
+						<div class="mui-row">
+							<div class="mui-col-sm-3">
+								<div class="iconfont icon-home"></div>
+								<div>Home</div>
+							</div>
+							<div class="mui-col-sm-3">
+								<div class="iconfont icon-home"></div>
+								<div>Home</div>
+							</div>
+							<div class="mui-col-sm-3">
+								<div class="iconfont icon-home"></div>
+								<div>Home</div>
+							</div>
+							<div class="mui-col-sm-3">
+								<div class="iconfont icon-home"></div>
+								<div>Home</div>
+							</div>
+						</div>
+						<div class="mui-row">
+							<div class="mui-col-sm-3">
+								<div class="iconfont icon-home"></div>
+								<div>Home</div>
+							</div>
+							<div class="mui-col-sm-3">
+								<div class="iconfont icon-home"></div>
+								<div>Home</div>
+							</div>
+							<div class="mui-col-sm-3">
+								<div class="iconfont icon-home"></div>
+								<div>Home</div>
+							</div>
+							<div class="mui-col-sm-3">
+								<div class="iconfont icon-home"></div>
+								<div>Home</div>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide">
+
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right">
+									Item 1
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right">
+									Item 2
+								</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right">
+									Item 3
+								</a>
+							</li>
+						</ul>
+					</div>
+					<div class="swiper-slide">Slide 3</div>
+				</div>
+				<!-- If we need pagination -->
+				<!-- 分页工具 -->
+				<div class="swiper-pagination"></div>
+			</div>
+			<div class="mui-row last-row" style="position: absolute;">
+				<div class="mui-row">
+					<div class="mui-col-sm-3">
+						<div class="iconfont icon-home"></div>
+						<div>Home</div>
+					</div>
+					<div class="mui-col-sm-3">
+						<div class="iconfont icon-home"></div>
+						<div>Home</div>
+					</div>
+					<div class="mui-col-sm-3">
+						<div class="iconfont icon-home"></div>
+						<div>Home</div>
+					</div>
+					<div class="mui-col-sm-3">
+						<div class="iconfont icon-home"></div>
+						<div>Home</div>
+					</div>
+				</div>
+				<div class="mui-row">
+					<div class="mui-col-sm-3">
+						<div class="iconfont icon-home"></div>
+						<div>Home</div>
+					</div>
+					<div class="mui-col-sm-3">
+						<div class="iconfont icon-home"></div>
+						<div>Home</div>
+					</div>
+					<div class="mui-col-sm-3">
+						<div class="iconfont icon-home"></div>
+						<div>Home</div>
+					</div>
+					<div class="mui-col-sm-3">
+						<div class="iconfont icon-home"></div>
+						<div>Home</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="#tabbar">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">首页</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-chat">
+				<span class="mui-icon mui-icon-email">
+					<!-- <span class="mui-badge">9</span> -->
+				</span>
+				<span class="mui-tab-label">消息</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-contact">
+				<span class="mui-icon mui-icon-contact"></span>
+				<span class="mui-tab-label">邮件</span>
+			</a>
+			<a class="mui-tab-item" href="#tabbar-with-map">
+				<span class="mui-icon mui-icon-gear"></span>
+				<span class="mui-tab-label">设置</span>
+			</a>
+		</nav>
+
+		<script src="js/mui.js"></script>
+		<script src="js/swiper-bundle.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+
+			const swiper = new Swiper('.swiper-container', {
+				// Optional parameters
+				// 滚动方向
+				// 带选项： 
+				// horizontal：横向； vertical：纵向
+				direction: 'horizontal',
+				// 是否循环
+				loop: false,
+
+				// 特效
+				// effect: 'cube',
+
+				// If we need pagination
+				// 分页配置
+				pagination: {
+					el: '.swiper-pagination',
+				},
+
+				// Navigation arrows
+				// 导航配置
+				// navigation: {
+				// 	// nextEl: '.box',
+				// 	nextEl: '.swiper-button-next',
+				// 	prevEl: '.swiper-button-prev',
+				// },
+
+			});
+		</script>
+	</body>
+
+</html>

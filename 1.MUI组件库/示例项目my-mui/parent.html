@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">创建和跳转页面</h1>
+		</header>
+		<div class="mui-content">
+			<div class="mui-row">
+				<button class="btn1">跳转到child1</button>
+			</div>
+			<div class="mui-row">
+				<button class="btn2">打开child1页面</button>
+			</div>
+		</div>
+
+
+		<script src="js/mui.js"></script>
+		<script type="text/javascript">
+			// 使用 init 其中配置 subpages 可以在页面中用 iframe 内嵌子页面
+			mui.init({
+				subpages: [{
+					url: './child1.html', //子页面HTML地址，支持本地地址和网络地址
+					id: 'child1', //子页面标志
+					styles: { // 子页面窗口的样式
+						top: '150px', //子页面顶部位置
+						bottom: '100px', //子页面底部位置
+						width: '200px', //子页面宽度，默认为100%
+						height: '300px', //子页面高度，默认为100%
+					},
+					extras: {} //额外扩展参数
+				}]
+			})
+
+			mui.plusReady(function () {
+				
+				// http://www.html5plus.org/doc/zh_cn/webview.html
+				setTimeout(()=>{
+					let currentView = plus.webview.currentWebview()
+					let children = currentView.children()
+					console.log(JSON.stringify(children))
+					children[0].loadURL('./alipay.html')
+				}, 3000)
+			})
+
+			let btn1 = document.querySelector('.btn1')
+			btn1.addEventListener('tap', () => {
+				location.href = './child1.html'
+			})
+			let btn2 = document.querySelector('.btn2')
+			btn2.addEventListener('tap', () => {
+				// 使用 mui.openWindow 可以打开子页面
+				let result = mui.openWindow({
+					url: './child1.html', // 打开的文件路径
+					id: 'child1-1',
+					styles: {
+						top: '0', //新页面顶部位置
+						bottom: '0', //新页面底部位置
+						// width: newpage - width, //新页面宽度，默认为100%
+						// height: newpage - height, //新页面高度，默认为100%
+					},
+					extras: {
+						// ..... //自定义扩展参数，可以用来处理页面间传值
+					},
+					createNew: false, //是否重复创建同样id的webview，默认为false:不重复创建，直接显示
+					show: {
+						autoShow: true, //页面loaded事件发生后自动显示，默认为true
+						// 动画类型文档：https://www.dcloud.io/docs/api/zh_cn/webview.html#plus.webview.AnimationTypeShow
+						aniShow: 'slide-in-bottom', //页面显示动画，默认为”slide-in-right“；
+						duration: 1000 //页面动画持续时间，Android平台默认100毫秒，iOS平台默认200毫秒；
+					},
+					waiting: {
+						autoShow: true, //自动显示等待框，默认为true
+						title: '正在加载...', //等待对话框上显示的提示内容
+						options: {
+							// width: waiting - dialog - widht, //等待框背景区域宽度，默认根据内容自动计算合适宽度
+							// height: waiting - dialog - height, //等待框背景区域高度，默认根据内容自动计算合适高度
+						}
+					}
+				})
+				console.log(JSON.stringify(result))
+				
+				console.log(result.close)
+				// 加载页面
+				result.loadURL('./alipay.html')
+				
+				setTimeout(()=>{
+					// result.close()
+					// mui.fire(result, 'myEvent', {msg: 'my message 123!!!'})
+				},3000)
+			})
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">图书详情</h1>
+		</header>
+		<div class="mui-content">
+			<form class="mui-input-group">
+				<div class="mui-input-row">
+					<label>书名</label>
+					<input name="name" type="text" placeholder="请输入" readonly="true">
+				</div>
+				<div class="mui-input-row">
+					<label>作者</label>
+					<input name="author" type="text" placeholder="请输入" readonly="true">
+				</div>
+			</form>
+		</div>
+		<script src="js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init()
+
+			// 图书数据
+			let books = [{
+					id: 0,
+					name: 'book1',
+					author: 'author1'
+				},
+				{
+					id: 1,
+					name: 'book2',
+					author: 'author2'
+				},
+				{
+					id: 2,
+					name: 'book3',
+					author: 'author3'
+				},
+				{
+					id: 3,
+					name: 'book4',
+					author: 'author4'
+				},
+				{
+					id: 4,
+					name: 'book5',
+					author: 'author5'
+				}
+			]
+
+			console.log(location.search)
+
+			// 获取参数
+			let id = location.search.split('?id=')[1]
+			console.log(id)
+
+			// 获取数据
+			let book = books[id]
+
+			let name = document.querySelector('input[name=name]')
+			let author = document.querySelector('input[name=author]')
+
+			name.value = book.name
+			author.value = book.author
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<!-- 引入picker的样式 -->
+		<link href="./css/mui.picker.css" rel="stylesheet" />
+		<link href="./css/mui.poppicker.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<script src="js/mui.js"></script>
+		<!-- 引入picker的js -->
+		<script src="./js/mui.picker.min.js"></script>
+
+		<script>
+            // 总结： 
+            // 引入 picker 对应的样式文件和js文件 mui.picker.css mui.poppicker.css mui.picker.min.js
+            // 在js中创建picker对象 new mui.PopPicker()
+            // 设置picker的选项 picker.setData()
+            // 按需要，可以设置初始选项 picker.pickers[0].setSelectedValue('ls')
+            // 调用show，打开picker
+
+
+			// picker 依赖的文件，可以从 hello-mui 项目中获取
+        </script>
+
+		<script type="text/javascript">
+			mui.init()
+
+			// picker 用于提供用户进行选择的交互工具
+
+			// 创建picker
+			let picker = new mui.PopPicker();
+			// 设置选项
+			picker.setData([
+				{
+					value: 'zs',
+					text: '张三'
+				},
+				{
+					value: 'ls',
+					text: '李四'
+				},
+			]);
+			
+			// 设置picker的初始值
+			// 通过选项的索引值，设置初始值
+			// picker.pickers[0].setSelectedIndex(1)
+			// 通过选项的值，设置初始值
+			picker.pickers[0].setSelectedValue('ls')
+			
+			// 打开picker
+			// show函数中接收一个参数，该参数是一个回调函数
+			// 当用户点击确定后，picker会调用该回调函数，其中selectItems是用户所选的选项
+			picker.show(function(selectItems) {
+				console.log(selectItems)
+				console.log(selectItems[0].text); //智子
+				console.log(selectItems[0].value); //zz 
+			})
+		</script>
+        
+	</body>
+
+</html>

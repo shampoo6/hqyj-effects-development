@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport"
+			content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">导航子页面的webview</h1>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<div class="mui-tab-item mui-active"">
+				<span class=" mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">child1</span>
+			</div>
+			<div class="mui-tab-item">
+				<span class="mui-icon mui-icon-email"></span>
+				<span class="mui-tab-label">child2</span>
+			</div>
+		</nav>
+
+		<script src="js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				// 创建子页面
+				subpages: [{
+					url: './child1.html',
+					id: 'content',
+					styles: {
+						top: '44px',
+						bottom: '51px'
+					}
+				}]
+			})
+
+			// 声明路由配置
+			let routes = [{
+					url: './child1.html'
+				},
+				{
+					url: './child2.html'
+				}
+			]
+
+			let btns = document.querySelectorAll('.mui-tab-item')
+			for (let i = 0; i < btns.length; i++) {
+				let btn = btns[i]
+				btn.addEventListener('tap', () => {
+					// 获取点击按钮的路由配置
+					let route = routes[i]
+					let url = route.url // 点击按钮时需要切换的页面地址
+
+					// 获取webview对象
+					let currentView = plus.webview.currentWebview() // 获取打开当前页面的webview对象
+					// 获取当前webview中的子窗口（子webview）
+					let children = currentView.children()
+
+					// 可以通过getURL来获取当前webview中加载页面的路径
+					console.log(currentView.getURL())
+
+					console.log(JSON.stringify(children))
+
+					// childview 是个 webview 对象
+					let childView = children[0]
+					childView.loadURL(url)
+				})
+			}
+
+
+			window.addEventListener('myEvent', (ev) => {
+				console.log(ev)
+			})
+		</script>
+	</body>
+
+</html>

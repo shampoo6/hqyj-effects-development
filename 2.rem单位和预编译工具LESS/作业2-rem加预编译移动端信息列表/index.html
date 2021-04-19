@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css" />
+</head>
+
+<body>
+    <!-- 定义标准 标准屏幕为 iphneX 375  字体大小 16 比例尺：375 / 16 -->
+    <!-- 标题栏 -->
+    <div class="nav">
+        <span class="navbar-text">List</span>
+    </div>
+    <div class="content">
+        <!-- 代标题的列表 -->
+        <div class="titled-list">
+            <div class="title">Recent Conversations</div>
+            <div class="list">
+                <div class="list-item">
+                    <!-- 头像 -->
+                    <div>
+                        <div class="avatar"></div>
+                    </div>
+                    <!-- 文本 -->
+                    <div>
+                        <div class="sub-title">Finn</div>
+                        <div class="subject">I`m a big deal</div>
+                        <div class="text-content">Listen, I`ve had a pretty message</div>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <!-- 头像 -->
+                    <div>
+                        <div class="avatar"></div>
+                    </div>
+                    <!-- 文本 -->
+                    <div>
+                        <div class="sub-title">Finn</div>
+                        <div class="subject">I`m a big deal</div>
+                        <div class="text-content">Listen, I`ve had a pretty message</div>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <!-- 头像 -->
+                    <div>
+                        <div class="avatar"></div>
+                    </div>
+                    <!-- 文本 -->
+                    <div>
+                        <div class="sub-title">Finn</div>
+                        <div class="subject">I`m a big deal</div>
+                        <div class="text-content">Listen, I`ve had a pretty message</div>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <!-- 头像 -->
+                    <div>
+                        <div class="avatar"></div>
+                    </div>
+                    <!-- 文本 -->
+                    <div>
+                        <div class="sub-title">Finn</div>
+                        <div class="subject">I`m a big deal</div>
+                        <div class="text-content">Listen, I`ve had a pretty message</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="titled-list">
+            <div class="title">Recent Conversations</div>
+            <div class="list">
+                <div class="list-item">
+                    <!-- 头像 -->
+                    <div>
+                        <div class="avatar"></div>
+                    </div>
+                    <!-- 文本 -->
+                    <div>
+                        <div class="sub-title">Finn</div>
+                        <div class="subject">I`m a big deal</div>
+                        <div class="text-content">Listen, I`ve had a pretty message</div>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <!-- 头像 -->
+                    <div>
+                        <div class="avatar"></div>
+                    </div>
+                    <!-- 文本 -->
+                    <div>
+                        <div class="sub-title">Finn</div>
+                        <div class="subject">I`m a big deal</div>
+                        <div class="text-content">Listen, I`ve had a pretty message</div>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <!-- 头像 -->
+                    <div>
+                        <div class="avatar"></div>
+                    </div>
+                    <!-- 文本 -->
+                    <div>
+                        <div class="sub-title">Finn</div>
+                        <div class="subject">I`m a big deal</div>
+                        <div class="text-content">Listen, I`ve had a pretty message</div>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <!-- 头像 -->
+                    <div>
+                        <div class="avatar"></div>
+                    </div>
+                    <!-- 文本 -->
+                    <div>
+                        <div class="sub-title">Finn</div>
+                        <div class="subject">I`m a big deal</div>
+                        <div class="text-content">Listen, I`ve had a pretty message</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    let html = document.querySelector('html')
+
+    window.addEventListener('load', () => {
+        resize()
+    })
+    window.addEventListener('resize', () => {
+        resize()
+    })
+
+    function resize() {
+        let fontSize = innerWidth / (375 / 16)
+        html.style.fontSize = fontSize + 'px'
+    }
+</script>
+
+</html>

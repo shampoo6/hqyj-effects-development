@@ -1,0 +1,56 @@
+@screen-width: 375px;
+@main-font-size: 16px;
+
+// 定义字体大小
+.h1 {
+    font-size: 1.5rem;
+}
+
+.h2 {
+    font-size: 1.25rem;
+}
+
+.h3 {
+    font-size: 1.125rem;
+}
+
+// 定义颜色
+@color-primary: #fff;
+@color-secondary: #000;
+@color-placehold: rgb(158, 158, 158);
+
+// 定义功能组件
+// 导航栏文本
+.navbar-text {
+    .h2();
+    font-weight: bolder;
+}
+
+// 大标题
+.title {
+    .h1();
+    font-weight: bolder;
+}
+
+// 副标题
+.sub-title {
+    .h2();
+}
+
+// 消息主题
+.subject {
+    .h3();
+}
+
+// 消息内容
+.text-content {
+    .h3();
+    color: @color-placehold;
+}
+
+// 头像
+.avatar {
+    width: 3.125rem;
+    height: 3.125rem;
+    border-radius: 3.125rem * 0.5;
+}

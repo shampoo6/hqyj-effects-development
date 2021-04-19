@@ -1,0 +1,48 @@
+// @import './theme.less'; // 引入其他less文件，也可以引入css样式文件
+@import './theme'; // 若引入的是less文件，.less扩展名可以省略
+
+
+// 声明变量
+// 使用@作为关键字，后面跟上变量名，冒号隔开，后面跟上变量值，最后分号结尾
+@my-color: #dd5858;
+@width: 200px;
+// less 支持数学运算
+// @height: 0.8 * @width; // less 支持四则运算
+// @height: @width/2; // less 支持四则运算
+// @height: @width + 3cm; // less 支持四则运算
+@height: @width - 1cm; // less 支持四则运算
+@color1: #f00;
+@color2: @color1 + #00f; // 颜色也能进行运算
+
+.fs-m {
+    font-size: 20px;
+}
+
+.fs-s {
+    font-size: 12px;
+}
+
+.fs-l {
+    font-size: 24px;
+}
+
+.box {
+    width: @width; // 访问变量
+    height: @height;
+    // background-color: @my-color;
+    background-color: @color2;
+
+    // 混合引入其他样式
+    .fs-l();
+}
+
+// 内嵌语法
+.container {
+    background-color: black;
+
+    // 在container元素内部的 text元素，将运用此样式
+    // 改写法最终被编译成 后代选择器
+    .text {
+        color: white;
+    }
+}

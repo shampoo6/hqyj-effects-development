@@ -1,0 +1,64 @@
+@import './theme';
+
+body {
+    margin: 0;
+    padding: 0;
+}
+@nav-height: 3.375rem;
+.nav {
+    width: 100%;
+    height: @nav-height;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 0.0625rem solid @color-placehold;
+    position: fixed;
+}
+
+.title {
+    margin-bottom: 0.5rem;
+}
+
+.titled-list {
+    padding-left: 1.5rem;
+    padding-top: 0.625rem;
+}
+
+.list-item {
+    height: 5.375rem;
+    display: flex;
+}
+
+@avatar-width: 4.125rem;
+.list-item>div:nth-child(1) {
+    width: @avatar-width;
+    height: 100%;
+    // background-color: red;
+    display: flex;
+    align-items: center;
+}
+
+.list-item>div:nth-child(2) {
+    width: calc(100% - @avatar-width);
+    height: 100%;
+    // background-color: blue;
+    border-bottom: 1px solid @color-placehold;
+}
+
+.avatar {
+    background-color: green;
+}
+
+.text-content {
+    width: calc(100% - 1em);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.content {
+    height: calc(100% - @nav-height);
+    overflow-y: scroll;
+    position: fixed;
+    top: @nav-height;
+}

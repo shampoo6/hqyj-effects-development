@@ -1,0 +1,34 @@
+.fs-20 {
+  font-size: 20px;
+}
+.fs-12 {
+  font-size: 12px;
+}
+.fs-24 {
+  font-size: 24px;
+}
+.my-button {
+  border-radius: 15px;
+  background-color: #0099ff;
+}
+.fs-m {
+  font-size: 20px;
+}
+.fs-s {
+  font-size: 12px;
+}
+.fs-l {
+  font-size: 24px;
+}
+.box {
+  width: 200px;
+  height: 162.20472441px;
+  background-color: #ff00ff;
+  font-size: 24px;
+}
+.container {
+  background-color: black;
+}
+.container .text {
+  color: white;
+}

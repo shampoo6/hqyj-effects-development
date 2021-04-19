@@ -1,0 +1,82 @@
+.h1 {
+  font-size: 1.5rem;
+}
+.h2 {
+  font-size: 1.25rem;
+}
+.h3 {
+  font-size: 1.125rem;
+}
+.navbar-text {
+  font-size: 1.25rem;
+  font-weight: bolder;
+}
+.title {
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+.sub-title {
+  font-size: 1.25rem;
+}
+.subject {
+  font-size: 1.125rem;
+}
+.text-content {
+  font-size: 1.125rem;
+  color: #9e9e9e;
+}
+.avatar {
+  width: 3.125rem;
+  height: 3.125rem;
+  border-radius: 1.5625rem;
+}
+body {
+  margin: 0;
+  padding: 0;
+}
+.nav {
+  width: 100%;
+  height: 3.375rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 0.0625rem solid #9e9e9e;
+  position: fixed;
+}
+.title {
+  margin-bottom: 0.5rem;
+}
+.titled-list {
+  padding-left: 1.5rem;
+  padding-top: 0.625rem;
+}
+.list-item {
+  height: 5.375rem;
+  display: flex;
+}
+.list-item > div:nth-child(1) {
+  width: 4.125rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.list-item > div:nth-child(2) {
+  width: calc(100% - 4.125rem);
+  height: 100%;
+  border-bottom: 1px solid #9e9e9e;
+}
+.avatar {
+  background-color: green;
+}
+.text-content {
+  width: calc(100% - 1em);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.content {
+  height: calc(100% - 3.375rem);
+  overflow-y: scroll;
+  position: fixed;
+  top: 3.375rem;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 参考：https://getbootstrap.com/docs/5.0/utilities/position/ -->
+
+    <!-- 使用position-设置定位 -->
+    <!-- 使用 top bottom start end 来设置位置 -->
+    <!-- 使用 translate-middle 来修改元素的transform-origin，以达到对齐的效果 -->
+    <div class="box bg-primary position-absolute top-50 start-50 translate-middle"></div>
+    <div class="box bg-primary position-absolute top-50 translate-middle-y"></div>
+    <div class="box bg-primary position-absolute start-50 translate-middle-x"></div>
+</body>
+
+</html>

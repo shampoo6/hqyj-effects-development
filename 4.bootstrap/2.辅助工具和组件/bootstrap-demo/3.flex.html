@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <style>
+        .c {
+            width: 800px;
+            height: 400px;
+        }
+
+        .box {
+            width: 200px;
+            height: 100px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 参考：https://getbootstrap.com/docs/5.0/utilities/flex/ -->
+
+    <!-- 在容器上增加 d-flex 来开启flex布局 -->
+    <!-- 方向：横向：flex-row 纵向：flex-column -->
+    <!-- <div class="c border border-danger d-flex flex-column">
+        <div class="box border border-5 p-3">item 1</div>
+        <div class="box border border-5 p-3">item 2</div>
+        <div class="box border border-5 p-3">item 3</div>
+    </div> -->
+
+    <!-- justify content 主轴对齐方式 -->
+    <!-- 添加class justify-content- 为前缀的class 就能增加主轴对齐方式 -->
+    <!-- <div class="c border border-danger d-flex flex-column justify-content-evenly">
+        <div class="box border border-5 p-3">item 1</div>
+        <div class="box border border-5 p-3">item 2</div>
+        <div class="box border border-5 p-3">item 3</div>
+    </div> -->
+
+    <!-- align items 次要轴对齐方式 -->
+    <!-- 添加class align-items- 为前缀的class 就能增加次要轴对齐方式 -->
+    <!-- <div class="c border border-danger d-flex flex-column align-items-center">
+        <div class="box border border-5 p-3">item 1</div>
+        <div class="box border border-5 p-3">item 2</div>
+        <div class="box border border-5 p-3">item 3</div>
+    </div> -->
+
+    <!-- align self 次要轴对齐方式 -->
+    <!-- 添加class align-self- 为前缀的class 就能增加子元素次要轴对齐方式 -->
+    <!-- <div class="c border border-danger d-flex flex-column align-items-center">
+        <div class="box border border-5 p-3 align-self-start">item 1</div>
+        <div class="box border border-5 p-3">item 2</div>
+        <div class="box border border-5 p-3">item 2</div>
+        <div class="box border border-5 p-3 align-self-end">item 3</div>
+    </div> -->
+
+    <!-- fill 填充 -->
+    <!-- 给子元素添加 flex-fill 将撑满一行或一列剩余部分 -->
+    <!-- <div class="c border border-danger d-flex align-items-center">
+        <div class="box border border-5 p-3">item 1</div>
+        <div class="box border border-5 p-3 flex-fill">item 2</div>
+        <div class="box border border-5 p-3">item 3</div>
+    </div> -->
+
+    <!-- wrap 换行 -->
+    <!-- 不换行：flex-nowrap -->
+    <!-- 换行：flex-wrap -->
+    <!-- <div class="d-flex flex-wrap border border-5" style="width: 16rem; height: 32rem">
+        <div class="p-2" style="height: 4ex;">Flex item</div>
+        <div class="p-2" style="height: 4ex;">Flex item</div>
+        <div class="p-2" style="height: 4ex;">Flex item</div>
+        <div class="p-2" style="height: 4ex;">Flex item</div>
+        <div class="p-2" style="height: 4ex;">Flex item</div>
+    </div> -->
+    
+    <!-- 多行的排列方式 -->
+    <!-- 使用align-content-前缀可以增加多行内容的排列方式 -->
+    <!-- 备选项：
+        start: 延次要轴的起点对齐
+        end: 延次要轴的终点对齐
+        between：两端对齐
+        center：居中
+    -->
+    <div class="d-flex flex-wrap border border-5 align-content-between" style="width: 16rem; height: 32rem">
+        <div class="p-2" style="height: 4ex;">Flex item</div>
+        <div class="p-2" style="height: 4ex;">Flex item</div>
+        <div class="p-2" style="height: 4ex;">Flex item</div>
+        <div class="p-2" style="height: 4ex;">Flex item</div>
+        <div class="p-2" style="height: 4ex;">Flex item</div>
+    </div>
+</body>
+
+</html>

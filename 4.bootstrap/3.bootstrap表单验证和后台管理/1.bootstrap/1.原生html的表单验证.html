@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 通过伪类设置验证通过和没通过的样式 */
+        input:valid {
+            border: 1px solid green;
+        }
+
+        input:invalid {
+            border: 1px dotted red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 在 from 标签中的 novalidate 属性，可以让表单停止进行用户输入的验证报告 -->
+    <form onsubmit="return false" novalidate>
+        <div><label>姓名：
+                <!-- required 可以让输入框变成必填项 -->
+                <!-- <input name="name" required /> -->
+                <!-- pattern 验证正则表达式 -->
+                <!-- <input name="name" pattern="good|bad|ok" required /> -->
+                <!-- minlength maxlength 限制输入的长度 -->
+                <!-- <input name="name" minlength="6" maxlength="10" required /> -->
+                <!-- min max 限制数字输入框的数字大小 -->
+                <!-- <input step="2" type="number" name="name" min="6" max="10" required /> -->
+
+                <!-- 验证是否是邮箱 -->
+                <input name="name" type="email" required />
+
+            </label></div>
+        <div>
+            <input type="submit" />
+        </div>
+    </form>
+
+    <button class="report">report</button>
+</body>
+<script>
+    // 参考：https://developer.mozilla.org/zh-CN/docs/Learn/Forms/Form_validation
+    // 参考：https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/HTML5/Constraint_validation
+    let nameInp = document.querySelector('input[name=name]')
+    let form = document.querySelector('form')
+    let btn = document.querySelector('input[type=submit]')
+    btn.addEventListener('click', ev => {
+        // 约束校验api：https://developer.mozilla.org/zh-CN/docs/Learn/Forms/Form_validation#%E7%BA%A6%E6%9D%9F%E6%A0%A1%E9%AA%8C%E7%9A%84_api
+
+
+
+        console.log(nameInp.validity)
+        // validity 属性存放了该表单元素验证的结果，表单元素中都存在该属性
+        // validity.valueMissing 用于判断用户是否没有输入值，该属性需要在表单元素上加上 required 属性才能生效
+        // validity.patternMismatch 用于判断正则表达式是否匹配失败，若失败，返回true，否则为false
+        // validity.rangeOverflow 用于判断数字是否大于设置的max属性，若大于max，结果为true，否则为false
+        // validity.rangeUnderflow 用于判断数字是否小于设置的min属性，若小于min，结果为true，否则为false
+        // validity.tooLong 用于判断输入的字符数量是否大于了设置的maxlength，若大于maxlength，结果为true，否则为false
+        // validity.tooShort 用于判断输入的字符数量是否小于了设置的minlength，若小于minlength，结果为true，否则为false
+        // validity.valid 用于判断该表单元素是否验证通过，为true说明通过，否则为false
+
+
+
+        // 自定义提示信息
+        // if (nameInp.validity.patternMismatch) {
+        //     // 设置自定义提示信息
+        //     // nameInp.setCustomValidity('你的输入框有错误')
+        //     nameInp.setCustomValidity('请输入good、bad或ok')
+        //     // 调用 form.reportValidity() 手动报告表单的验证结果
+        //     form.reportValidity()
+        // }
+
+        // 表单元素的checkValidity函数，当调用的时候，就会对表单元素进行一次验证
+        // 将返回验证的结果，为bool值，true代表通过，false代表失败
+        // nameInp.checkValidity()
+    })
+
+
+
+    // todo list
+    // novalidate 作用 不显示提示信息 但依然会执行验证
+    // validity 属性介绍
+    // 验证api
+    //      formElement.checkValidity()
+    //      formElement.setCustomValidity(message)
+    //      form.reportValidity()
+
+</script>
+
+</html>

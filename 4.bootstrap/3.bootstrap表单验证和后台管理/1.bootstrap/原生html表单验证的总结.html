@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form onsubmit="return false" novalidate>
+        <div>
+            <label>姓名: <input name="name" type="text" minlength="2" maxlength="200" required></label>
+        </div>
+        <div>
+            <label>年龄: <input name="age" type="number" min="0" max="150" required></label>
+        </div>
+        <div>
+            <button>提交</button>
+        </div>
+    </form>
+</body>
+<script>
+    // 表单验证总结步骤
+    // 1. 给表单添加 novalidate 屏蔽自动验证报告
+    // 2. 对每个元素的 validity 属性进行验证
+    // 3. 根据每个元素的验证结果设置自定义异常 setCustomValidity
+    // 4. 提交验证报告
+    // 5. 根据验证结果执行后续网络操作
+
+
+    const form = document.querySelector('form')
+    const nameEl = document.querySelector('input[name=name]')
+    const ageEl = document.querySelector('input[name=age]')
+    const btn = document.querySelector('button')
+
+    btn.addEventListener('click', () => {
+        if (nameEl.validity.tooShort) {
+            nameEl.setCustomValidity('姓名长度不能小于2')
+        } else if (nameEl.validity.valueMissing) {
+            nameEl.setCustomValidity('请输入姓名')
+        } else {
+            nameEl.setCustomValidity('')
+        }
+
+        if (ageEl.validity.rangeUnderflow) {
+            ageEl.setCustomValidity('年龄不能小于0岁')
+        } else if (ageEl.validity.rangeOverflow) {
+            ageEl.setCustomValidity('年龄不能大于150岁')
+        } else if (ageEl.validity.valueMissing) {
+            ageEl.setCustomValidity('请输入年龄')
+        } else {
+            ageEl.setCustomValidity('')
+        }
+
+        form.reportValidity()
+
+        if (form.checkValidity()) {
+            // todo 当代码运行到此处 证明表单已验证通过
+            // 那么可以在此处进行网络请求
+            console.log('验证通过')
+        }
+    })
+</script>
+
+</html>

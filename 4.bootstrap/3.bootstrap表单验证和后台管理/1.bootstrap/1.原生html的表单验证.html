@@ -19,12 +19,15 @@
 </head>
 
 <body>
-    <!-- 在 from 标签中的 novalidate 属性，可以让表单停止进行用户输入的验证报告 -->
+    <!-- 在 from 标签中的 novalidate 属性，可以让表单停止自动进行用户输入的验证报告 -->
     <form onsubmit="return false" novalidate>
         <div><label>姓名：
                 <!-- required 可以让输入框变成必填项 -->
                 <!-- <input name="name" required /> -->
-                <!-- pattern 验证正则表达式 -->
+                <!-- pattern 验证正则表达式
+                    例如：pattern=".txt" 那么只能匹配 .txt 不能匹配 1.txt
+                    所以若要匹配任意 .txt 结尾的内容 请输入 pattern="[\s\S]*.txt"
+                -->
                 <!-- <input name="name" pattern="good|bad|ok" required /> -->
                 <!-- minlength maxlength 限制输入的长度 -->
                 <!-- <input name="name" minlength="6" maxlength="10" required /> -->
@@ -44,7 +47,6 @@
 </body>
 <script>
     // 参考：https://developer.mozilla.org/zh-CN/docs/Learn/Forms/Form_validation
-    // 参考：https://developer.mozilla.org/zh-CN/docs/Web/Guide/HTML/HTML5/Constraint_validation
     let nameInp = document.querySelector('input[name=name]')
     let form = document.querySelector('form')
     let btn = document.querySelector('input[type=submit]')
@@ -68,6 +70,7 @@
         // 自定义提示信息
         // if (nameInp.validity.patternMismatch) {
         //     // 设置自定义提示信息
+        //     // 当赋值空字符串的时候代表没有异常
         //     // nameInp.setCustomValidity('你的输入框有错误')
         //     nameInp.setCustomValidity('请输入good、bad或ok')
         //     // 调用 form.reportValidity() 手动报告表单的验证结果
@@ -76,7 +79,10 @@
 
         // 表单元素的checkValidity函数，当调用的时候，就会对表单元素进行一次验证
         // 将返回验证的结果，为bool值，true代表通过，false代表失败
+        // 该函数应该在表单元素 setCustomValidity 设置自定义异常后调用
         // nameInp.checkValidity()
+        // 表单的 checkValidity 函数，可以验证整个表单是否都验证通过了
+        // form.checkValidity()
     })
 
 
